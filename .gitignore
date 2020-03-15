@@ -13,6 +13,9 @@ target/
 .springBeans
 .sts4-cache
 
+## docker data
+pgdata
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
