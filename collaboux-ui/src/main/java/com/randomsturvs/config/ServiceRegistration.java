@@ -15,12 +15,12 @@ public class ServiceRegistration implements InitializingBean {
     @Value("${app.client.id:collaboux}")
     private String clientId;
 
-    @Value("${app.client.secret:secret}")
+    @Value("${app.client.secret:collaboux}")
     private String clientSecret;
 
     private static final String SCOPE = "profile";
 
-    @Value("${collaboux.oauth.client.resource_ids:collabo-com.randomsturvs.config}")
+    @Value("${collaboux.oauth.client.resource_ids:collaboux}")
     private String resourceIds;
 
     @Value("${collaboux.oauth.client.redirect_uri:http://localhost:8080}")

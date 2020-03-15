@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  postgresql:
+    restart: always
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=collaboux
+      - POSTGRES_PASSWORD=collaboux
+      - PGDATA=/pgdata
+      - POSTGRES_DB=collaboux
+    volumes:
+      - ./pgdata:/pgdata
+  redis:
+    image: redis
+    entrypoint: redis-server --appendonly yes
+    restart: always
+    ports:
+      - 6379:6379
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+
+  kafka:
+    image: wurstmeister/kafka
+    depends_on:
+      - "zookeeper"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "USER_LOGIN:1:1"

@@ -1,11 +1,13 @@
 package com.randomsturvs.collaboux;
 
 import com.google.gson.internal.LinkedHashTreeMap;
+import org.bouncycastle.crypto.generators.BCrypt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.ParseException;
@@ -18,6 +20,12 @@ import java.util.*;
 //@WebMvcTest(SecuredController.class)
 @RunWith(MockitoJUnitRunner.class)
 public class CollabouxApplicationTests {
+
+	@Test
+	public void testBcrypt(){
+		System.out.println((new BCryptPasswordEncoder()).encode("collaboux"));
+
+	}
 
 	@Test
 	public void stringToListTest(){

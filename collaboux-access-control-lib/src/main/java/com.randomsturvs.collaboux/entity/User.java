@@ -1,12 +1,13 @@
 package com.randomsturvs.collaboux.entity;
 
-import com.randomsturvs.collaboux.model.Authority;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.*;
 
 
@@ -20,6 +21,10 @@ public class User {
 
     private String username;
 
+    private String name;
+
+    private String email;
+
     private String password;
 
     private Boolean active;
@@ -28,14 +33,17 @@ public class User {
 
     private Boolean suspended;
 
+    @Enumerated(EnumType.STRING)
+    private AuthProvider provider;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
-    @CreatedDate
+    @CreationTimestamp
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
-    @LastModifiedDate
+    @UpdateTimestamp
     private Date updatedAt;
 
     @Transient
@@ -111,5 +119,29 @@ public class User {
 
     public void setGrantedAuthorities(Collection<GrantedAuthority> grantedAuthorites) {
         this.grantedAuthorities = grantedAuthorites;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public AuthProvider getAuthProvider() {
+        return provider;
+    }
+
+    public void setAuthProvider(AuthProvider authProvider) {
+        this.provider = authProvider;
     }
 }

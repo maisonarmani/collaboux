@@ -1,0 +1,26 @@
+
+<h4>
+  Sign up
+</h4>
+
+<div>
+  <form [formGroup]="auth">
+  <label>
+    Username:F
+    <input type="text" formControlName="username">
+  </label>
+  <label>
+    Email:
+    <input type="text" formControlName="email" >
+  </label>
+  <label>
+    Password:
+    <input type="text" formControlName="password">
+  </label>
+  <p>
+    <button (click)="signUp()">Signup</button>
+  </p>
+  </form>
+</div>
+<a href="http://local.collaboux.coma:8080/oauth2/authorize/google?redirect_uri=http://localhost:4200">Login with Google</a>
+<a href="http://local.collaboux.com:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:4200">Login with Facebook</a>

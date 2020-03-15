@@ -3,6 +3,7 @@ package com.randomsturvs.collaboux.config;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
 
 @Configuration
 public class Collaboux {
+
     public AuthenticationManager oAuth2AuthenticationManager(){
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setSupportRefreshToken(true);

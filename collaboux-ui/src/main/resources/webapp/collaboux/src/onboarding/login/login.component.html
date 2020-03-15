@@ -1,0 +1,31 @@
+
+<h4>
+  Login Now
+</h4>
+
+<div>
+  <form [formGroup]="auth" (ngSubmit)="login()">
+    <p>
+    <label>
+      Username:
+      <input type="text" formControlName="username">
+    </label>
+    </p>
+    <p>
+    <label>
+      Password:
+      <input type="text" formControlName="password" >
+    </label>
+    </p>
+    <p>
+      <button type="submit">Login</button>
+    </p>
+  </form>
+</div>
+<p>
+
+  <a href="http://local.collaboux.coma:8080/oauth2/authorize/google?redirect_uri=http://localhost:4200">Login with Google</a>
+</p>
+<p>
+  <a href="http://local.collaboux.com:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:4200">Login with Facebook</a>
+</p>
