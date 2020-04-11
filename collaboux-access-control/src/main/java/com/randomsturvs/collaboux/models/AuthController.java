@@ -1,4 +1,4 @@
-package com.randomsturvs.collaboux.controller;
+package com.randomsturvs.collaboux.models;
 
 import com.randomsturvs.collaboux.entity.AuthProvider;
 import com.randomsturvs.collaboux.entity.User;

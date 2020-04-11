@@ -1,6 +1,6 @@
-package com.randomsturvs.collaboux.controller;
+package com.randomsturvs.collaboux.controllers;
 
-import org.springframework.security.access.prepost.PreAuthorize;
+import com.randomsturvs.collaboux.social.models.UserPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleController {
 
     @GetMapping("")
-    @PreAuthorize("hasRole('IS_AUTHENTICATED_ANONYMOUSLY')")
-    public String sample(){
+    public String sample(UserPrincipal userPrincipal){
         return "Has error";
     }
 

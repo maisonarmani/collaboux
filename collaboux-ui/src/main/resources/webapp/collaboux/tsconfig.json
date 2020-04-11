@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "collaboux-ui-components": [
+        "dist/collaboux-ui-components"
+      ],
+      "collaboux-ui-components/*": [
+        "dist/collaboux-ui-components/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

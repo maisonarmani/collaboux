@@ -1,0 +1,30 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="mason" id="2018-9-20" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="users" columnName="address"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="users">
+            <column name="address" type="varchar(255)" />
+        </addColumn>
+    </changeSet>
+    <changeSet author="mason" id="2020-covid-19">
+        <loadData catalogName="collaboux"
+                  encoding="UTF-8"
+                  file="liquibase/data/users.csv"
+                  quotchar="'"
+                  schemaName="public"
+                  separator=","
+                  tableName="users" >
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

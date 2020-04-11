@@ -26,6 +26,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 public abstract class BaseSecurityConfig extends WebSecurityConfigurerAdapter {
 
+
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 

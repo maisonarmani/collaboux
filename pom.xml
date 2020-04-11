@@ -11,7 +11,8 @@
 		<module>collaboux-access-control-lib</module>
 		<module>collaboux-access-control</module>
 		<module>collaboux-ui</module>
-        <module>collaboux-kafka-service</module>
+		<module>collaboux-kafka-service</module>
+		<module>collaboux-kafka-lib</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -103,12 +104,18 @@
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
+
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
 			<version>2.1.3.RELEASE</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

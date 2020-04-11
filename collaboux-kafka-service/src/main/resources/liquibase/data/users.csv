@@ -1,0 +1,2 @@
+id,active,blocked,created_at,email,name,password,provider,suspended,updated_at,username,address
+2,1,0,2020-02-02,masonarmani38@gmail.com,Mason Armani,$2a$10$2nCIzTb/aiEq/ERbTFivyOFMy6ML15OENOdsb4Wo.GdG4ODJijByO,local,0,2020-02-02,masonarmani,no address

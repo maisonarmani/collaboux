@@ -8,8 +8,6 @@ export class EventRouteActivator implements CanActivate{
 
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean  {
-    // route to login for start
-    //this.router.navigate(['login']);
     return true;
   }
 

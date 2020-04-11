@@ -125,127 +125,41 @@
         }
       }
     },
-    "collaboux-ui": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/collaboux-ui",
-      "sourceRoot": "projects/collaboux-ui/src",
-      "prefix": "app",
+    "collaboux-ui-components": {
+      "projectType": "library",
+      "root": "projects/collaboux-ui-components",
+      "sourceRoot": "projects/collaboux-ui-components/src",
+      "prefix": "cb",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "outputPath": "dist/collaboux-ui",
-            "index": "projects/collaboux-ui/src/index.html",
-            "main": "projects/collaboux-ui/src/main.ts",
-            "polyfills": "projects/collaboux-ui/src/polyfills.ts",
-            "tsConfig": "projects/collaboux-ui/tsconfig.app.json",
-            "aot": false,
-            "assets": [
-              "projects/collaboux-ui/src/favicon.ico",
-              "projects/collaboux-ui/src/assets"
-            ],
-            "styles": [
-              "projects/collaboux-ui/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "projects/collaboux-ui/src/environments/environment.ts",
-                  "with": "projects/collaboux-ui/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "collaboux-ui:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "collaboux-ui:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "collaboux-ui:build"
+            "tsConfig": "projects/collaboux-ui-components/tsconfig.lib.json",
+            "project": "projects/collaboux-ui-components/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/collaboux-ui/src/test.ts",
-            "polyfills": "projects/collaboux-ui/src/polyfills.ts",
-            "tsConfig": "projects/collaboux-ui/tsconfig.spec.json",
-            "karmaConfig": "projects/collaboux-ui/karma.conf.js",
-            "assets": [
-              "projects/collaboux-ui/src/favicon.ico",
-              "projects/collaboux-ui/src/assets"
-            ],
-            "styles": [
-              "projects/collaboux-ui/src/styles.scss"
-            ],
-            "scripts": []
+            "main": "projects/collaboux-ui-components/src/test.ts",
+            "tsConfig": "projects/collaboux-ui-components/tsconfig.spec.json",
+            "karmaConfig": "projects/collaboux-ui-components/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/collaboux-ui/tsconfig.app.json",
-              "projects/collaboux-ui/tsconfig.spec.json",
-              "projects/collaboux-ui/e2e/tsconfig.json"
+              "projects/collaboux-ui-components/tsconfig.lib.json",
+              "projects/collaboux-ui-components/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/collaboux-ui/e2e/protractor.conf.js",
-            "devServerTarget": "collaboux-ui:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "collaboux-ui:serve:production"
-            }
-          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "collaboux"
 }

@@ -49,7 +49,6 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         }
 
         clearAuthenticationAttributes(request, response);
-        response.setHeader("Authentication","Bearer:3892784374986346868267863868362632");
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 

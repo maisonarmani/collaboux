@@ -48,7 +48,9 @@ public class WebSecurityConfig extends BaseSecurityConfig {
                         "/**/*.jpg",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js")
+                        "/**/*.js",
+                        "/ws/info",
+                        "/ws/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

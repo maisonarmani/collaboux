@@ -1,0 +1,18 @@
+[
+  {
+    "topic": {
+      "name": "USER_CREATED",
+      "partition": "1",
+      "readOffset": "beginning",
+      "replicationFactor":1
+    }
+  },
+  {
+    "topic": {
+      "name": "USER_DELETED",
+      "partition": "1",
+      "readOffset": "beginning",
+      "replicationFactor":1
+    }
+  }
+]
