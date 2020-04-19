@@ -4,7 +4,6 @@ import com.randomsturvs.collaboux.entity.OauthClient;
 import com.randomsturvs.collaboux.repository.OAuthClientRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

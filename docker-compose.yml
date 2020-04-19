@@ -7,7 +7,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./pgdata:./pgdata
+      - ./pgdata:/pgdata
     environment:
       - POSTGRES_USER=collaboux
       - POSTGRES_PASSWORD=collaboux

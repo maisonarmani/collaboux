@@ -1,0 +1,18 @@
+[{
+  "name": "access-control-service",
+  "updateMode": "UPDATE",
+  "authorities": [{
+    "name": "COLLABOUX_USER",
+    "friendlyName": "Collaboux User",
+    "description": "User of the application",
+    "domain": "ANY"
+  }],
+  "roles": [{
+    "name": "USER_ROLE"
+  }],
+  "rolesAuthorities": {
+    "USER_ROLE": [
+      "COLLABOUX_USER"
+    ]
+  }
+}]

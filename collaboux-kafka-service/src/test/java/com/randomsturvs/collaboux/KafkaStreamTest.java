@@ -44,7 +44,7 @@ public class KafkaStreamTest {
     public interface IKafkaConstants {
         public static String KAFKA_BROKERS = "localhost:9092";
         public static Integer MESSAGE_COUNT=1000;
-        public static String CLIENT_ID="bloverse-account-service";
+        public static String CLIENT_ID="bloverse-notification-service";
         public static String GROUP_ID_CONFIG="consumerGroup1";
         public static Integer MAX_NO_MESSAGE_FOUND_COUNT=100;
         public static String OFFSET_RESET_LATEST="latest";
@@ -52,14 +52,14 @@ public class KafkaStreamTest {
         public static Integer MAX_POLL_RECORDS=1;
     }
 
-    public static Producer<Long, String> createProducer() {
+    public static Producer<String, String> createProducer() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, IKafkaConstants.KAFKA_BROKERS);
         props.put(ProducerConfig.CLIENT_ID_CONFIG, IKafkaConstants.CLIENT_ID);
-        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongSerializer.class.getName());
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         //props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class.getName());
-        return new KafkaProducer<Long, String>(props);
+        return new KafkaProducer<String, String>(props);
     }
 
 
@@ -119,6 +119,16 @@ public class KafkaStreamTest {
         bio= "user.bio";
     }
 
+    @Data
+    private class NotificationMessage{
+
+        String[] users= new String[]{"23ade-0b7b-4e59-92f3-a19bef77e0a7","23ade-0b7b-4e59-92f3-a19bef77e0a7"};
+        private String userId= "23ade-0b7b-4e59-92f3-a19bef77e0a7",
+                type= "COMMENT", //'COMMENT' OR 'DISCUSSION'
+                interactionId= "8c9d6168-0b51-473e-bf50-54649f2b1477",
+                text= "Text of the discussion";
+    }
+
     @Test
     public void testProducer() throws Exception{
 
@@ -137,6 +147,18 @@ public class KafkaStreamTest {
 
         System.out.printf(jsonStr1);
         System.out.printf(jsonStr2);
+    }
+
+    @Test
+    public void testArticleNotification() throws Exception{
+
+        ObjectMapper Obj = new ObjectMapper();
+
+        ProducerRecord producerRecord1 = new ProducerRecord<>(
+                "USER_LOGIN","8c9d6168-0b51-473e-bf50-54649f2b147",
+                Obj.writeValueAsString(new NotificationMessage()));
+
+        createProducer().send(producerRecord1).get();
     }
 
     @Test
