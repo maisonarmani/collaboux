@@ -1,6 +1,6 @@
 package com.randomsturvs.collaboux.repository.security;
 
-import com.randomsturvs.collaboux.social.utils.CookieUtils;
+import com.randomsturvs.collaboux.utils.CookieUtils;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.stereotype.Component;

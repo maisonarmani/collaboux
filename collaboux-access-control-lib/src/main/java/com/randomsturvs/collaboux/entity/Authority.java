@@ -1,7 +1,7 @@
 package com.randomsturvs.collaboux.entity;
 
 
-import com.randomsturvs.collaboux.enums.Domain;
+import com.randomsturvs.collaboux.enums.DomainEnum;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -12,8 +12,8 @@ import javax.validation.constraints.NotNull;
 public class Authority  implements GrantedAuthority {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
 
     @NotNull
     @Column(unique = true)
@@ -24,13 +24,15 @@ public class Authority  implements GrantedAuthority {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private Domain domain;
+    private DomainEnum domain;
+
+    public Authority() {}
 
     public Authority(@NotNull String name) {
         this.name = name;
     }
 
-    public Authority(@NotNull String name, String friendlyName, Domain domain) {
+    public Authority(@NotNull String name, String friendlyName, DomainEnum domain) {
         this.name = name;
         this.friendlyName = friendlyName;
         this.domain = domain;
@@ -41,11 +43,11 @@ public class Authority  implements GrantedAuthority {
         return this.name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,11 +67,11 @@ public class Authority  implements GrantedAuthority {
         this.friendlyName = friendlyName;
     }
 
-    public Domain getDomain() {
+    public DomainEnum getDomain() {
         return domain;
     }
 
-    public void setDomain(Domain domain) {
+    public void setDomainEnum(DomainEnum domain) {
         this.domain = domain;
     }
 

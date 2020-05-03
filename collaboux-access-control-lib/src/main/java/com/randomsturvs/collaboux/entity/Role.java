@@ -10,22 +10,26 @@ import javax.validation.constraints.NotNull;
 @Table(name = "role")
 public class Role  {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
 
     @NotNull
     @Column(unique = true)
     private String name;
 
+    public Role() {
+
+    }
+
     public Role(@NotNull String name) {
         this.name = name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,6 +41,4 @@ public class Role  {
         this.name = name;
     }
 
-    public Role() {
-    }
 }

@@ -1,6 +1,6 @@
 package com.randomsturvs.collaboux.model;
 
-import com.randomsturvs.collaboux.validators.ValidPhoneNumberConstraint;
+import com.randomsturvs.collaboux.validators.constraint.ValidPhoneNumberConstraint;
 
 import javax.validation.constraints.NotNull;
 

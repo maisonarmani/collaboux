@@ -1,6 +1,6 @@
 package com.randomsturvs.collaboux.entity;
 
-import com.randomsturvs.collaboux.enums.Domain;
+import com.randomsturvs.collaboux.enums.DomainEnum;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class OauthClient implements ClientDetails {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -157,7 +157,7 @@ public class OauthClient implements ClientDetails {
 
     public Set<GrantedAuthority> getAuthorities() {
         List<String> authorities = new ArrayList<>(Arrays.asList(this.authorities.split(",")));
-        List<GrantedAuthority> grantedAuthorities = authorities.stream().map(n-> new Authority(n,n, Domain.FRONTEND)).collect(Collectors.toList());
+        List<GrantedAuthority> grantedAuthorities = authorities.stream().map(n-> new Authority(n,n, DomainEnum.FRONTEND)).collect(Collectors.toList());
         return new HashSet<>(grantedAuthorities) ;
     }
 

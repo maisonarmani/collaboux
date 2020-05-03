@@ -1,16 +1,15 @@
 package com.randomsturvs.collaboux;
 
-import com.randomsturvs.collaboux.config.AccessControl;
+import com.randomsturvs.collaboux.config.AccessControlConfig;
 import com.randomsturvs.collaboux.entity.Authority;
 import com.randomsturvs.collaboux.entity.Role;
 import com.randomsturvs.collaboux.entity.RoleAuthority;
-import com.randomsturvs.collaboux.enums.Domain;
+import com.randomsturvs.collaboux.enums.DomainEnum;
 import com.randomsturvs.collaboux.repository.RoleRepository;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import org.hibernate.SessionFactory;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -22,7 +21,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -75,11 +73,11 @@ public class SpringSecurityDisableTest {
             {
                 Object obj = jsonParser.parse(reader);
                 JSONArray accessControls = (JSONArray) obj;
-                AccessControl accessControl = new AccessControl();
+                AccessControlConfig accessControlConfig = new AccessControlConfig();
                 accessControls.forEach((json)->{
                     JSONObject jsonObject = (JSONObject) json;
-                    accessControl.setName(jsonObject.getAsString("name"));
-                    accessControl.setUpdateMode(AccessControl.UpdateMode.valueOf(jsonObject.getAsString("updateMode")));
+                    accessControlConfig.setName(jsonObject.getAsString("name"));
+                    accessControlConfig.setUpdateMode(AccessControlConfig.UpdateMode.valueOf(jsonObject.getAsString("updateMode")));
 
                     JSONArray authorities = (JSONArray) jsonObject.get("authorities");
                     JSONArray roles = (JSONArray) jsonObject.get("roles");
@@ -92,13 +90,13 @@ public class SpringSecurityDisableTest {
                         authorities.forEach((b)->{
                             JSONObject object = (JSONObject) b;
                             Authority authority = new Authority(object.getAsString("name"));
-                            authority.setDomain(Domain.valueOf(object.getAsString("domain")));
+                            authority.setDomainEnum(DomainEnum.valueOf(object.getAsString("domain")));
                             authority.setFriendlyName(object.getAsString("friendlyName"));
                             authority.setDescription(object.getAsString("description"));
                             authoritySet.add(authority);
                         });
 
-                        accessControl.setAuthorities(authoritySet);
+                        accessControlConfig.setAuthorities(authoritySet);
                     }else{
                         logger.warn("No authority was added for your service");
                     }
@@ -114,7 +112,7 @@ public class SpringSecurityDisableTest {
                             rolesSet.add(role);
                         });
 
-                        accessControl.setRoles(rolesSet);
+                        accessControlConfig.setRoles(rolesSet);
 
                     }else{
                         logger.warn("No role was added for your service");
@@ -131,7 +129,7 @@ public class SpringSecurityDisableTest {
                             rolesAuthoritiesSet.add(roleAuthority);
                         });
 
-                        accessControl.setAuthorityRoles(rolesAuthoritiesSet);
+                        accessControlConfig.setAuthorityRoles(rolesAuthoritiesSet);
                     }
 
                 });

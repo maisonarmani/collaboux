@@ -1,7 +1,10 @@
 package com.randomsturvs.collaboux.dao;
 
 import com.randomsturvs.collaboux.entity.User;
+import com.randomsturvs.collaboux.repository.UserRepository;
+import com.randomsturvs.collaboux.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,33 +14,29 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
 public class OAuthUserDao {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserRoleRepository userRoleRepository;
 
     public User getUserDetails(String username) {
-        Collection<GrantedAuthority> grantedAuthoritiesList = new ArrayList<>();
-        String userSQLQuery = "SELECT username,password FROM users WHERE username=?";
-        List<User> list = jdbcTemplate.query(userSQLQuery, new String[] { username },
-                (ResultSet rs, int rowNum) -> {
-                    User user = new User();
-                    user.setUsername(username);
-                    user.setPassword(rs.getString("password"));
-                    return user;
-                });
 
+        User user = new User();
+        user.setUsername(username);
 
-        if (list.size() > 0) {
-            grantedAuthoritiesList.add(new SimpleGrantedAuthority("ADMINISTRATOR"));
-            grantedAuthoritiesList.add(new SimpleGrantedAuthority("ACTIVE_USER"));
-            grantedAuthoritiesList.add(new SimpleGrantedAuthority("INACTIVE_USER"));
-            list.get(0).setGrantedAuthorities(grantedAuthoritiesList);
-            return list.get(0);
+        Optional<User> optionalUser = userRepository.findOne(Example.of(user));
+        if(optionalUser.isPresent()){
+            user =  optionalUser.get();
+            userRoleRepository.findAllByUser(user);
         }
+
         return null;
     }
 }

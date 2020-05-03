@@ -2,17 +2,43 @@
   "name": "access-control-service",
   "updateMode": "UPDATE",
   "authorities": [{
-    "name": "COLLABOUX_USER",
+    "name": "USER",
     "friendlyName": "Collaboux User",
     "description": "User of the application",
     "domain": "ANY"
-  }],
+  },{
+    "name": "CONFIRMED",
+    "friendlyName": "Collaboux User",
+    "description": "User of the application",
+    "domain": "ANY"
+  },{
+    "name": "USER_PENDING_CONFIRMATION",
+    "friendlyName": "Collaboux User",
+    "description": "User of the application",
+    "domain": "ANY"
+  },{
+    "name": "USER_UNSET_PASSWORD",
+    "friendlyName": "Collaboux User",
+    "description": "User of the application",
+    "domain": "ANY"
+  }
+  ],
   "roles": [{
-    "name": "USER_ROLE"
+    "name": "ROLE_USER_CONFIMRED"
+  },{
+    "name": "ROLE_PENDING_CONFIRMATION_USER"
+  },{
+    "name": "ROLE_UNSET_PASSWORD_USER"
   }],
   "rolesAuthorities": {
-    "USER_ROLE": [
-      "COLLABOUX_USER"
+    "ROLE_USER_CONFIRMED": [
+      "USER","CONFIRMED"
+    ],
+    "ROLE_PENDING_CONFIRMATION_USER": [
+      "USER","USER_PENDING_CONFIRMATION"
+    ],
+    "ROLE_UNSET_PASSWORD_USER": [
+      "USER","USER_UNSET_PASSWORD"
     ]
   }
 }]

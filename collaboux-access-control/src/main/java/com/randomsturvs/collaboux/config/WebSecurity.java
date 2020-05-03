@@ -1,9 +1,9 @@
 package com.randomsturvs.collaboux.config;
 
-import com.randomsturvs.collaboux.social.RestAuthenticationEntryPoint;
-import com.randomsturvs.collaboux.social.handlers.OAuth2AuthenticationFailureHandler;
-import com.randomsturvs.collaboux.social.handlers.OAuth2AuthenticationSuccessHandler;
-import com.randomsturvs.collaboux.social.services.CustomOAuth2UserService;
+import com.randomsturvs.collaboux.entrypoint.RestAuthenticationEntryPoint;
+import com.randomsturvs.collaboux.handlers.OAuth2AuthenticationFailureHandler;
+import com.randomsturvs.collaboux.handlers.OAuth2AuthenticationSuccessHandler;
+import com.randomsturvs.collaboux.services.CustomOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         jsr250Enabled = true,
         prePostEnabled = true
 )
-public class WebSecurity extends BaseSecurity {
+public class WebSecurity extends BaseSecurityConfig {
     @Autowired
     private CustomOAuth2UserService customOAuth2UserService;
 

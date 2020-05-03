@@ -1,7 +1,7 @@
 package com.randomsturvs.collaboux;
 
-import com.randomsturvs.collaboux.config.KafkaProperties;
-import com.randomsturvs.collaboux.social.models.AppProperties;
+import com.randomsturvs.collaboux.properties.KafkaProperties;
+import com.randomsturvs.collaboux.properties.AppProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

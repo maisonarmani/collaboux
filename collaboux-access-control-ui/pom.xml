@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+    <artifactId>collaboux-access-control-ui</artifactId>
+    <groupId>com.randomsturvs</groupId>
+
+    <modelVersion>4.0.0</modelVersion>
+    <version>1.0.0</version>
+    <parent>
+        <artifactId>collaboux</artifactId>
+        <groupId>com.randomsturvs</groupId>
+        <version>0.0.1</version>
+    </parent>
+    
+    <dependencies>
+
+        <dependency>
+            <groupId>com.randomsturvs</groupId>
+            <artifactId>collaboux-access-control-lib</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

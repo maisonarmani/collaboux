@@ -68,7 +68,7 @@ public class ServiceRegistration implements InitializingBean {
     public void afterPropertiesSet() {
         OauthClient oauthClientEntity = buildOauthClientDetails();
 
-        if (oAuthClientRepository.existsByClientId(oauthClientEntity.getClientId())){
+        if (oAuthClientRepository.findIdByClientId(oauthClientEntity.getClientId()) != null){
             oauthClientEntity.setId(oAuthClientRepository.findDistinctByClientId(oauthClientEntity.getClientId()).getId());
            oAuthClientRepository.save(oauthClientEntity);
         }

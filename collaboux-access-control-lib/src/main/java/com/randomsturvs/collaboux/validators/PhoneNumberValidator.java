@@ -1,5 +1,7 @@
 package com.randomsturvs.collaboux.validators;
 
+import com.randomsturvs.collaboux.validators.constraint.ValidPhoneNumberConstraint;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

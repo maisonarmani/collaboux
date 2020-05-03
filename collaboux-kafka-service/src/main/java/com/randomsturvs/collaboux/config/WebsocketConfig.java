@@ -1,7 +1,7 @@
 package com.randomsturvs.collaboux.config;
 
-import com.randomsturvs.collaboux.social.TokenProvider;
-import com.randomsturvs.collaboux.social.services.CustomUserDetailsService;
+import com.randomsturvs.collaboux.provider.TokenProvider;
+import com.randomsturvs.collaboux.services.CustomLocalUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
@@ -30,7 +30,7 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
     private TokenProvider tokenProvider;
 
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    private CustomLocalUserDetailsService customLocalUserDetailsService;
 
 
     @Override
@@ -57,12 +57,9 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
                 if(headers != null && null != headers.get("access-token")){
                     Long userId = tokenProvider.getUserIdFromToken(((LinkedList<String>) headers.get("access-token")).getFirst());
 
-                    UserDetails userDetails = customUserDetailsService.loadUserById(userId);
+                    UserDetails userDetails = customLocalUserDetailsService.loadUserById(userId);
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authentication.setDetails(new Serializable() {
-                        String remoteAdress;
-                        String sessionid = message.getHeaders().get("simpSessionId").toString();
-
                         @Override
                         public String toString() {
                             return super.toString();

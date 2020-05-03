@@ -1,10 +1,9 @@
 package com.randomsturvs.collaboux.entity;
 
 
+import com.randomsturvs.collaboux.enums.AuthProviderEnum;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -16,7 +15,7 @@ import java.util.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     private String username;
@@ -34,7 +33,7 @@ public class User {
     private Boolean suspended;
 
     @Enumerated(EnumType.STRING)
-    private AuthProvider provider;
+    private AuthProviderEnum provider;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -137,11 +136,11 @@ public class User {
         this.email = email;
     }
 
-    public AuthProvider getAuthProvider() {
+    public AuthProviderEnum getAuthProvider() {
         return provider;
     }
 
-    public void setAuthProvider(AuthProvider authProvider) {
-        this.provider = authProvider;
+    public void setAuthProvider(AuthProviderEnum authProviderEnum) {
+        this.provider = authProviderEnum;
     }
 }

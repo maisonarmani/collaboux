@@ -62,15 +62,10 @@ public class CollabouxServiceRegistration implements InitializingBean {
         return oauthClientDetails;
     }
 
-    public String getClientIDSecret(){
-        return clientId + ":" + clientSecret;
-    }
-
     @Override
     public void afterPropertiesSet() {
         OauthClient oauthClientEntity = buildOauthClientDetails();
-        System.out.println(oAuthClientRepository.existsByClientId(oauthClientEntity.getClientId()));
-        if (oAuthClientRepository.existsByClientId(oauthClientEntity.getClientId())){
+        if (oAuthClientRepository.findIdByClientId(oauthClientEntity.getClientId()) != null){
             oauthClientEntity.setId(oAuthClientRepository.findDistinctByClientId(oauthClientEntity.getClientId()).getId());
            oAuthClientRepository.save(oauthClientEntity);
         }

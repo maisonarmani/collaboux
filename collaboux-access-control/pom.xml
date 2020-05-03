@@ -41,6 +41,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.randomsturvs</groupId>
+            <artifactId>collaboux-kafka-lib</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>

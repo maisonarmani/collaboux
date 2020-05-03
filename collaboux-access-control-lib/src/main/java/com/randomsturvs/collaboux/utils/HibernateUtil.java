@@ -1,8 +1,7 @@
 package com.randomsturvs.collaboux.utils;
 
-import com.randomsturvs.collaboux.inspector.SqlCommandStatementInspector;
+import com.randomsturvs.collaboux.sqlinspector.SqlCommandStatementInspector;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy;
 import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
 import org.springframework.context.annotation.Bean;
@@ -23,14 +22,10 @@ public class HibernateUtil {
     @Autowired
     private DataSource dataSource;
 
-    @Bean(name = "entityManagerFactory")
+    @Bean
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 
-        emf.setDataSource(dataSource);
-        emf.setPackagesToScan("com.randomsturvs.collaboux");
-
-        emf.setJpaVendorAdapter(vendorAdapter);
         Properties properties = new Properties();
         properties.put("hibernate.cache.provider_class","org.hibernate.cache.NoCacheProvider");
         properties.put("hibernate.hbm2ddl.auto","update");
@@ -39,6 +34,12 @@ public class HibernateUtil {
         properties.put("hibernate.physical_naming_strategy", SpringPhysicalNamingStrategy.class);
         properties.put("hibernate.implicit_naming_strategy", SpringImplicitNamingStrategy.class);
         properties.put("hibernate.session_factory.statement_inspector", SqlCommandStatementInspector.class);
+
+        emf.setDataSource(dataSource);
+        emf.setPackagesToScan("com.randomsturvs.collaboux");
+
+        emf.setJpaVendorAdapter(vendorAdapter);
+
         emf.setJpaProperties(properties);
         emf.setPersistenceUnitName("default");
 

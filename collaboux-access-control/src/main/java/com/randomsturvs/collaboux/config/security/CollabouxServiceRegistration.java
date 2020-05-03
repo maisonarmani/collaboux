@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -35,6 +39,9 @@ public class CollabouxServiceRegistration implements InitializingBean {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    EntityManagerFactory entityManager;
 
 
     private static final String AUTO_APPROVED_SCOPES = SCOPE;
@@ -65,18 +72,10 @@ public class CollabouxServiceRegistration implements InitializingBean {
         return oauthClientDetails;
     }
 
-    public String getClientIDSecret(){
-        return clientId + ":" + clientSecret;
-    }
-
     @Override
     public void afterPropertiesSet() {
         OauthClient oauthClientEntity = buildOauthClientDetails();
-        System.out.println(oAuthClientRepository.existsByClientId(oauthClientEntity.getClientId()));
-        if (oAuthClientRepository.existsByClientId(oauthClientEntity.getClientId())){
-            oauthClientEntity.setId(oAuthClientRepository.findDistinctByClientId(oauthClientEntity.getClientId()).getId());
-           oAuthClientRepository.save(oauthClientEntity);
-        }
+        oauthClientEntity.setId(oAuthClientRepository.findIdByClientId(oauthClientEntity.getClientId()));
         oAuthClientRepository.save(oauthClientEntity);
     }
 }

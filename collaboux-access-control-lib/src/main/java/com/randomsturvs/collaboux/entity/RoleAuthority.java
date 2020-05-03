@@ -8,7 +8,7 @@ import java.util.Set;
 public class RoleAuthority {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -18,6 +18,9 @@ public class RoleAuthority {
     @ManyToOne
     @JoinColumn(name = "authority_id")
     Authority authority;
+
+    public RoleAuthority() {
+    }
 
     public Long getId() {
         return id;
