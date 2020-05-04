@@ -1,28 +1,33 @@
 package com.randomsturvs.collaboux.services;
 
 
-import com.randomsturvs.collaboux.entity.Role;
-import com.randomsturvs.collaboux.entity.User;
-import com.randomsturvs.collaboux.entity.UserRole;
+import com.randomsturvs.collaboux.entity.*;
 import com.randomsturvs.collaboux.enums.AuthProviderEnum;
 import com.randomsturvs.collaboux.enums.RoleEnum;
+import com.randomsturvs.collaboux.events.UserSignupEvent;
 import com.randomsturvs.collaboux.exceptions.BadRequestException;
 import com.randomsturvs.collaboux.model.OAuth2UserInfo;
 import com.randomsturvs.collaboux.model.SignUpRequest;
+import com.randomsturvs.collaboux.principal.UserPrincipal;
+import com.randomsturvs.collaboux.repository.RoleAuthorityRepository;
 import com.randomsturvs.collaboux.repository.RoleRepository;
 import com.randomsturvs.collaboux.repository.UserRepository;
 import com.randomsturvs.collaboux.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Example;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -36,10 +41,16 @@ public class UserService {
     RoleRepository roleRepository;
 
     @Autowired
+    RoleAuthorityRepository roleAuthorityRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private EntityManagerFactory entityManagerFactory;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -87,8 +98,8 @@ public class UserService {
     }
 
     private void publishEvent(User user) {
-//        UserSignupEvent userSignupEvent = new UserSignupEvent(this, user);
-//        publisher.publishEvent(userSignupEvent);
+        UserSignupEvent userSignupEvent = new UserSignupEvent(this, user);
+        publisher.publishEvent(userSignupEvent);
     }
 
 
@@ -108,6 +119,35 @@ public class UserService {
         userRole.setRole(roleRepository.findOne(Example.of(role)).get());
         userRoleRepository.save(userRole);
     }
+
+    public User getUser(UserPrincipal userPrincipal){
+        List<RoleAuthority> roleAuthorities = new ArrayList<>();
+        List<GrantedAuthority> grantedAuthorities =  new ArrayList<>();
+
+        User user = new User();
+        user.setId(userPrincipal.getId());
+        List<UserRole> userRoles = userRoleRepository.findAllByUser(user);
+
+        if(!userRoles.isEmpty()){
+            user = userRoles.get(0).getUser();
+        }
+
+
+        for(UserRole userRole : userRoles){
+            grantedAuthorities.add(new Authority(userRole.getRole().getName()));
+            roleAuthorities.addAll(roleAuthorityRepository.findAllByRole(userRole.getRole()));
+        }
+
+        user.setRoles(grantedAuthorities.stream().map(
+                n-> new Role(n.getAuthority())).collect(Collectors.toList()));
+
+        grantedAuthorities.addAll(roleAuthorities.stream().map(
+                n-> new Authority(n.getAuthority().getName(),n.getAuthority().getFriendlyName(),n.getAuthority().getDomain())).collect(Collectors.toList()));
+
+        user.setGrantedAuthorities(grantedAuthorities);
+        return user;
+    }
+
 
     public User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {
         existingUser.setName(oAuth2UserInfo.getName());

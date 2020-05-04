@@ -13,6 +13,5 @@ public interface RoleAuthorityRepository extends BaseRepository<RoleAuthority, L
     @Query(nativeQuery = true, value="truncate table role_authority")
     void truncate();
 
-
     List<RoleAuthority> findAllByRole(Role role);
 }

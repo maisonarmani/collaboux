@@ -1,4 +1,4 @@
-package com.randomsturvs.collaboux.models;
+package com.randomsturvs.collaboux.controllers;
 
 import com.randomsturvs.collaboux.principal.UserPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;

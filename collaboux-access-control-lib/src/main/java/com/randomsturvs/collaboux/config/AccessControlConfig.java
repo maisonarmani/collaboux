@@ -13,7 +13,7 @@ public class AccessControlConfig {
     private UpdateMode updateMode;
     private Set<Authority> authorities;
     private Set<Role> roles;
-    private Set<RoleAuthority> authorityRoles;
+    private List<RoleAuthority> authorityRoles;
 
     public String getName() {
         return name;
@@ -47,11 +47,11 @@ public class AccessControlConfig {
         this.roles = roles;
     }
 
-    public Set<RoleAuthority> getAuthorityRoles() {
+    public List<RoleAuthority> getAuthorityRoles() {
         return authorityRoles;
     }
 
-    public void setAuthorityRoles(Set<RoleAuthority> authorityRoles) {
+    public void setAuthorityRoles(List<RoleAuthority> authorityRoles) {
         this.authorityRoles = authorityRoles;
     }
 

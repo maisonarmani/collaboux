@@ -1,4 +1,4 @@
-package com.randomsturvs.collaboux.models;
+package com.randomsturvs.collaboux.controllers;
 
 
 import net.minidev.json.JSONObject;

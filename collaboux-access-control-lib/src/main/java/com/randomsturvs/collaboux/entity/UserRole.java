@@ -1,5 +1,7 @@
 package com.randomsturvs.collaboux.entity;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 
 

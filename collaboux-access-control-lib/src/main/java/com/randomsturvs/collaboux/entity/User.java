@@ -48,6 +48,9 @@ public class User {
     @Transient
     private Collection<GrantedAuthority> grantedAuthorities;
 
+    @Transient
+    private Collection<Role> roles;
+
     public Long getId() {
         return id;
     }
@@ -120,6 +123,14 @@ public class User {
         this.grantedAuthorities = grantedAuthorites;
     }
 
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
     public String getName() {
         return name;
     }
@@ -135,6 +146,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
     public AuthProviderEnum getAuthProvider() {
         return provider;

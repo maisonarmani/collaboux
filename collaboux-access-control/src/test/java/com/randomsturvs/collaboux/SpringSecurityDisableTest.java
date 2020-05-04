@@ -27,7 +27,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.FileReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @ContextConfiguration
@@ -120,7 +122,7 @@ public class SpringSecurityDisableTest {
 
 
                     if(rolesAuthorities != null){
-                        Set<RoleAuthority> rolesAuthoritiesSet = new HashSet<>();
+                        List<RoleAuthority> rolesAuthoritiesSet = new ArrayList<>();
                         rolesAuthorities.keySet().forEach(key->{
                             RoleAuthority roleAuthority = new RoleAuthority();
                             ((JSONArray) rolesAuthorities.get(key)).forEach(values->{

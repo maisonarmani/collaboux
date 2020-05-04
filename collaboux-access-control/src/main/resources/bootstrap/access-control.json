@@ -24,7 +24,7 @@
   }
   ],
   "roles": [{
-    "name": "ROLE_USER_CONFIMRED"
+    "name": "ROLE_USER_CONFIRMED"
   },{
     "name": "ROLE_PENDING_CONFIRMATION_USER"
   },{

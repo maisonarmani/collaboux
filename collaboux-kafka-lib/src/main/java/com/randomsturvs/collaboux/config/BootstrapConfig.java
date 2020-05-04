@@ -1,6 +1,6 @@
 package com.randomsturvs.collaboux.config;
 
-import com.randomsturvs.collaboux.models.KafkaTopic;
+import com.randomsturvs.collaboux.controllers.KafkaTopic;
 import com.randomsturvs.collaboux.properties.KafkaProperties;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;

@@ -24,6 +24,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 import java.io.FileReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Configuration
@@ -55,6 +56,7 @@ public class AccessControlBootstrapConfig implements InitializingBean {
         JSONParser jsonParser = new JSONParser(0);
         URL resource = getClass().getClassLoader().getResource(properties.getFilePath());
         AccessControlConfig accessControlConfig = new AccessControlConfig();
+        ArrayList<RoleAuthority> roleAuthorityArrayList = new ArrayList<>();
 
         if (resource != null){
             try (FileReader reader = new FileReader(resource.getFile()))
@@ -106,10 +108,9 @@ public class AccessControlBootstrapConfig implements InitializingBean {
                     }
 
                     if(rolesAuthorities != null){
-                        ModifiedSet<RoleAuthority> rolesAuthoritiesModifiedSet = new ModifiedSet<>();
                         rolesAuthorities.keySet().forEach(key->{
-                            RoleAuthority roleAuthority = new RoleAuthority();
                             ((JSONArray) rolesAuthorities.get(key)).forEach(values->{
+                                RoleAuthority roleAuthority = new RoleAuthority();
                                 roleAuthority.setAuthority(new Authority((String) values));
                                 roleAuthority.setRole(new Role((String) key));
 
@@ -119,21 +120,18 @@ public class AccessControlBootstrapConfig implements InitializingBean {
                                 if(roleId != null && authorityId != null){
                                     roleAuthority.getAuthority().setId(authorityId);
                                     roleAuthority.getRole().setId(roleId);
-                                    rolesAuthoritiesModifiedSet.add(roleAuthority);
+                                    if(!roleAuthorityRepository.exists(Example.of(roleAuthority, ExampleMatcher.matching().withIgnorePaths("name")))){
+                                        roleAuthorityArrayList.add(roleAuthority);
+                                    }
+
                                 }
                             });
-
-                            try{
-                                roleAuthorityRepository.truncate();
-                            }
-                            catch (PersistenceException e){
-                                logger.warn("Truncate must have caused some issues");
-                            }
-                            roleAuthorityRepository.saveAll(rolesAuthoritiesModifiedSet);
                         });
-                        accessControlConfig.setAuthorityRoles(rolesAuthoritiesModifiedSet);
+                        accessControlConfig.setAuthorityRoles(roleAuthorityArrayList);
                     }
                 });
+
+                roleAuthorityRepository.saveAll(roleAuthorityArrayList);
             } catch (Exception e) {
                 e.printStackTrace();
             }

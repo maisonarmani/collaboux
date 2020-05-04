@@ -1,4 +1,4 @@
-package com.randomsturvs.collaboux.models;
+package com.randomsturvs.collaboux.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
