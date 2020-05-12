@@ -1,0 +1,47 @@
+@import "../../../../assets/scss/variables";
+
+.options-card{
+  border:solid 1px $border-light-color;
+  border-radius: 10px;
+  text-align: center;
+  margin: 1em;
+  max-width: 20em;
+  position: relative;
+  max-height:18em;
+  cursor: pointer;
+  &.selected{
+    & > .checkbox{
+      background-color: $optional-color;
+      opacity: 0.3;
+    }
+  }
+  &:hover, &.selected{
+    background-color: $border-light-color;
+  }
+
+  .hidden-text, img, .title,.checkbox{
+    transition:all 0.35s cubic-bezier(0.45, 1.13, 1, 1);
+    position: relative;
+    top:0em;
+  }
+  & > img{
+    height:11em;
+    width:11em;
+  }
+  & > .checkbox{
+    width: 20px;
+    height: 20px;
+    margin:auto;
+    border-radius:100%;
+    border:solid 2px darken($border-light-color, 10);
+    background-color: white;
+    display: block;
+  }
+  & > .title{
+    line-height: 1.2;
+  }
+  & > .hidden-text{
+    height: 0;
+    overflow: hidden;
+  }
+}

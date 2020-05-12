@@ -1,0 +1,27 @@
+    <div style="text-align: center; margin-top: 3em;">
+      <h1 class="text-weight-bold text-color-medium text-large">What brings you to the <b class="text-color-primary">Box?</b></h1>
+      <h4 class="text-small text-weight-normal text-color-light mt-5">Select the options that best describes you, dont worry you can explore others later.</h4>
+    </div>
+
+    <div style="max-width: 60em; margin: auto" class="display-flex flex-space-evenly my-10 py-4">
+
+      <options-card
+        name="creative"
+        imgSrc="../../../assets/images/undraw_mello_otq1.svg"
+        title="I'm a creative and looking to connect with other creatives"  (select)="setSelected($event)" [selected]="selected === 'creative'" ></options-card>
+
+      <options-card
+        name="company"
+        imgSrc="../../../assets/images/undraw_imagination_ok71.svg"
+        title="I'm looking to find amazing creatives to work with." (select)="setSelected($event)" [selected]="selected == 'company'" ></options-card>
+
+      <options-card
+        name="others"
+        imgSrc="../../../assets/images/undraw_videographer_nnc7.svg"
+        title="I'm here to get source inspiration"  (select)="setSelected($event)" [selected]="selected == 'others'" ></options-card>
+
+    </div>
+
+    <div class="my-10 display-flex flex-align-center flex-column">
+      <a href="" class="btn btn-block-inline" routerLink="/accounts/setup/add-information">Continue</a>
+    </div>

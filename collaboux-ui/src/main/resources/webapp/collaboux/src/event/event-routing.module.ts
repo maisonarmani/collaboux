@@ -7,8 +7,8 @@ import {EventRouteActivator} from "../shared/event.route.activator";
 
 
 const routes: Routes = [
-  {path:'',loadChildren:'../onboarding/onboarding.module#OnboardingModule'},
-  {path:'auth',loadChildren:'../onboarding/onboarding.module#OnboardingModule'},
+  {path:'',loadChildren:'../onboarding/onboarding.module#AccountsModule'},
+  {path:'auth',loadChildren:'../onboarding/onboarding.module#AccountsModule'},
   {path:'event', component:EventListComponent, canActivate:[EventRouteActivator] , children:[
       {path:'list', component:EventListComponent, canActivate:[EventRouteActivator]},
     ]

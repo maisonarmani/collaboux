@@ -1,0 +1,65 @@
+$base:3;
+$max: 12;
+$factor: 0.3;
+@for $i from 1 through $max {
+  .m#{$i - $max+1}{
+    margin:#{$base -($factor * $i)}em !important;;
+  }
+
+  .mx#{$i - $max + 1}{
+    margin-left: #{$base -($factor * $i)}em !important;;
+    margin-right: #{$base -($factor * $i)}em !important;;
+  }
+
+  .my#{$i - $max + 1}{
+    margin-top:#{$base -($factor * $i)}em !important;;
+    margin-bottom:#{$base -($factor * $i)}em !important;;
+  }
+
+  .mt#{$i - $max + 1}{
+    margin-top:#{$base -($factor * $i)}em !important;;
+  }
+
+  .mb#{$i - $max + 1}{
+    margin-bottom:#{$base -($factor * $i)}em !important;;
+  }
+
+  .ml#{$i - $max + 1}{
+    margin-left:#{$base -($factor * $i)}em !important;;
+  }
+
+  .mr#{$i - $max + 1}{
+    margin-right:#{$base -($factor * $i)}em !important;;
+  }
+
+  /// padding
+  .p#{$i - $max+1}{
+    padding:#{$base -($factor * $i)}em !important;
+  }
+
+  .px#{$i - $max + 1}{
+    padding-left: #{$base -($factor * $i)}em !important;;
+    padding-right: #{$base -($factor * $i)}em !important;;
+  }
+
+  .py#{$i - $max + 1}{
+    padding-top:#{$base -($factor * $i)}em !important;;
+    padding-bottom:#{$base -($factor * $i)}em !important;;
+  }
+
+  .pt#{$i - $max + 1}{
+    padding-top:#{$base -($factor * $i)}em !important;;
+  }
+
+  .pb#{$i - $max + 1}{
+    padding-bottom:#{$base -($factor * $i)}em !important;;
+  }
+
+  .pl#{$i - $max + 1}{
+   padding-left:#{$base -($factor * $i)}em !important;;
+  }
+
+  .pr#{$i - $max + 1}{
+    padding-right:#{$base -($factor * $i)}em !important;;
+  }
+}

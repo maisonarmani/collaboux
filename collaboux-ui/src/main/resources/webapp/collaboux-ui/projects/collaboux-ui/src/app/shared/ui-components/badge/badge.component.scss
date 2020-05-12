@@ -1,0 +1,59 @@
+@import "../../../../assets/scss/variables";
+.badge-container {
+  flex-direction: row;
+  overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  overflow: scroll;
+}
+
+.badge{
+  text-align: center;
+  position:relative;
+  display: inline-block;
+
+  &, & > .badge__image,& > .badge__check{
+    width:5.5em;
+  }
+
+  & > .badge__image, & > .badge__check{
+    height:5.5em;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  & > .badge__image{
+    text-align: center;
+    background-color: $text-secondary-color;
+    display: flex;
+    align-items: center;
+    img{
+      width: 60%;
+      margin: auto;
+    }
+  }
+
+  & > .badge__text{
+    text-align: center;
+    color:$text-light;
+    display: inline-block;
+    font-size: 0.8em;
+  }
+
+  & > .badge__check{
+    top:0;
+    left: 0;
+    color: white;
+    line-height: 5.5em;
+    font-weight:bold;
+    position: absolute;
+    opacity: 0.9;
+    display: none;
+    background-color: #858585;
+  }
+
+  &:hover, &.selected{
+    & > .badge__check{
+      display: block;
+    }
+  }
+}

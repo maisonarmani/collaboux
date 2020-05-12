@@ -1,0 +1,47 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, img, ins, kbd, q, s, samp, small, sub, sup, tt, var, u, center, dl, dt, dd, field set, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, fig caption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-weight: 400
+}
+
+article, aside, details, fig caption, figure, footer, header, hgroup, menu, nav, section {
+  display: block
+}
+
+body {
+  line-height: 1
+}
+
+blockquote, q {
+  quotes: none
+}
+
+block quote:before, block quote:after, q:before, q:after {
+  content: '';
+  content: none
+}
+
+ins {
+  text-decoration: none
+}
+
+del {
+  text-decoration: line-through
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+svg{
+  vertical-align: middle;
+}
+img{
+  width: 100%;
+}

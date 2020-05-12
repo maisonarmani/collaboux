@@ -1,0 +1,35 @@
+<div style="max-width: 60em; margin: auto">
+  <div style=" margin-top: 2em;">
+    <h4 class="text-weight-bold text-color-medium text-large"><b class="text-color-primary">Awesome!</b> Let's create your profile</h4>
+  </div>
+
+  <div class="display-flex flex-column mt-6">
+    <div>
+      <h3 class="text-weight-bold text-color-dark">Select a badge <span class="tag">{{badgesSelected && badgesSelected.length}}/5 </span></h3>
+      <small class="text-small text-color-light">Each badge represents a musically skill you poses and would love to share with the world.</small>
+    </div>
+    <div class="badge-container mt-7 flex-row">
+      <badge imgSrc="../../../assets/images/badges/029-singer.svg"  name="Singer" [value]="badgesSelected"></badge>
+      <badge imgSrc="../../../assets/images/badges/024-melodion.svg"  name="Song writer" [value]="badgesSelected"></badge>
+      <badge imgSrc="../../../assets/images/badges/020-headphone.svg"  name="Producers" [value]="badgesSelected"></badge>
+      <badge imgSrc="../../../assets/images/badges/026-piano.svg"  name="Pianist" [value]="badgesSelected"></badge>
+      <badge imgSrc="../../../assets/images/badges/018-acoustic guitar.svg"  name="Guitarist" [value]="badgesSelected"></badge>
+      <badge imgSrc="../../../assets/images/badges/028-saxophone.svg"  name="Saxophonist" [value]="badgesSelected"></badge>
+      <badge imgSrc="../../../assets/images/badges/004-bass drum.svg"  name="Drummer" [value]="badgesSelected"></badge>
+      <badge imgSrc="../../../assets/images/badges/027-radio.svg"  name="Instrumentalist" [value]="badgesSelected"></badge>
+    </div>
+  </div>
+  <div class="display-flex flex-column mt-6">
+    <div>
+      <h3 class="text-weight-bold text-color-dark">Who are you looking to work with?<span class="tag">3</span></h3>
+      <small class="text-small text-color-light">Each badge represents a musically skill you would love to work with, It helps to be more specify</small>
+    </div>
+  </div>
+
+
+  <div class="my-10 display-flex flex-align-start flex-column ">
+    <a href="" class="btn btn-block-inline btn-extended" routerLink="/accounts/setup/complete">Continue</a>
+  </div>
+
+</div>
+

@@ -1,0 +1,7 @@
+<div class="badge mr-6" [ngClass]="{'selected':selected}" (click)="setSelected($event)">
+  <div  class="badge__image">
+    <img [src]="imgSrc"/>
+  </div>
+  <p class="text-weight-bold badge__text text-color-medium">{{name}}</p>
+  <span class="badge__check"><i-feather name="check"></i-feather></span>
+</div>

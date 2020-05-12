@@ -1,0 +1,42 @@
+<accounts>
+  <div class="flex-align-center flex display-flex flex-row fill-height">
+    <div class="fill-width" style="max-width: 28em">
+      <div>
+        <h1 class="center color-primary-text fill-width text-color-dark"><a routerLink="/accounts/sign-up" class="text-weight-bold">Hi !</a></h1>
+        <div class="display-flex flex-row">
+          <div style="padding: 0.5em 0">
+            <h3 class="text-color-medium">We've been <span class="text-color-primary text-weight-bold">waiting</span> for you !</h3>
+            <span class="text-color-light text-small">Sign in with default account providers  or <a routerLink="/accounts/sign-up">create a new account</a>  </span>
+          </div>
+        </div>
+
+      </div>
+      <form class="flex-column flex display-flex">
+        <label>Username</label>
+        <input type="text" placeholder="6+ characters" />
+
+        <label>Password</label>
+        <input type="password" placeholder="6+ characters" />
+      </form>
+
+      <p class="text-color-medium text-small">
+        I must have forgotten my password. <a routerLink="/accounts/forgot-password">Recover password.</a>
+      </p>
+      <a routerLink="/accounts/setup"  class="btn btn-block text-align-center">Sign in now</a>
+      <div>
+        <hr>
+      </div>
+      <div class="display-flex flex-column">
+        <a routerLink="/accounts/setup" class="btn-block btn google" alt="login with gogogle" >
+          <span class="display-inline-block ml-3" style="width: 1em;"><icon-svg name="google"></icon-svg></span>
+          Sign up with Google
+        </a>
+        <a routerLink="/accounts/setup" class="btn-block btn facebook" alt="login with facebook" ><i-feather name="facebook"></i-feather> Sign up with facebook</a>
+
+      </div>
+
+    </div>
+  </div>
+</accounts>
+
+
