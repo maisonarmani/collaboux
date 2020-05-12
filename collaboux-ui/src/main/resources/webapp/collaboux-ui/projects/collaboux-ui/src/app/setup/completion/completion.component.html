@@ -17,6 +17,14 @@
       </div>
     </div>
   </div>
+  <div>
+
+    <ng-select [multiple]="true" [(ngModel)]="selectedCars">
+      <ng-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">{{car.name}}</ng-option>
+      <ng-option [value]="'custom'">Custom</ng-option>
+    </ng-select>
+
+  </div>
 
 
   <div class="my-10 display-flex flex-align-start flex-column ">

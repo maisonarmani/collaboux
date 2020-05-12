@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompletionComponent implements OnInit {
 
-  constructor() { }
+  private selectedCars = [3];
+  private cars = [
+    { id: 1, name: 'Volvo' },
+    { id: 2, name: 'Saab' },
+    { id: 3, name: 'Opel' },
+    { id: 4, name: 'Audi' },
+  ];
 
-  ngOnInit() {
-  }
+  constructor() { }
+  ngOnInit() { }
 
 }

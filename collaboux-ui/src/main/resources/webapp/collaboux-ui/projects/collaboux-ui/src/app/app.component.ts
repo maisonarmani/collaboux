@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 import {IStompJS, StompInjectionToken} from "./shared/lib/stomp";
+import {NgSelectConfig} from "@ng-select/ng-select";
 
 declare let SockJS;
 @Component({
@@ -15,7 +16,16 @@ export class AppComponent implements OnInit {
   stompClient : IStompJS;
 
   constructor(@Inject(StompInjectionToken) private stomp: IStompJS, private http: HttpClient,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,private config: NgSelectConfig) {
+    this.config.notFoundText = 'Custom not found';
+    this.config.appendTo = 'body';
+    // set the bindValue to global config when you use the same
+    // bindValue in most of the place.
+    // You can also override bindValue for the specified template
+    // by defining `bindValue` as property
+    // Eg : <ng-select bindValue="some-new-value"></ng-select>
+    this.config.bindValue = 'value';
+  }
 
   ngOnInit(): void {
    // either redirect user to there page or take them to a home page
