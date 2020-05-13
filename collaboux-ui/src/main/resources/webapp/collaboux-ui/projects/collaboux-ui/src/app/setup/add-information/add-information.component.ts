@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class AddInformationComponent implements OnInit {
 
   @Input()
-  private badgesSelected: string[] = ["Singer"];
+  public badgesSelected: string[] = ["Singer"];
 
   constructor() { }
 

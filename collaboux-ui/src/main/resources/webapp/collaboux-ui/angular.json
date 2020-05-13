@@ -22,7 +22,7 @@
             "main": "projects/collaboux-ui/src/main.ts",
             "polyfills": "projects/collaboux-ui/src/polyfills.ts",
             "tsConfig": "projects/collaboux-ui/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/collaboux-ui/src/favicon.ico",
               "projects/collaboux-ui/src/assets"
@@ -48,7 +48,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -142,8 +141,13 @@
           "options": {
             "tsConfig": "projects/collaboux-components/tsconfig.lib.json",
             "project": "projects/collaboux-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/collaboux-components/tsconfig.lib.prod.json"
+            }
           }
-        },
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -185,7 +189,7 @@
             "main": "projects/collaboux-components-ui/src/main.ts",
             "polyfills": "projects/collaboux-components-ui/src/polyfills.ts",
             "tsConfig": "projects/collaboux-components-ui/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/collaboux-components-ui/src/favicon.ico",
               "projects/collaboux-components-ui/src/assets"
@@ -211,7 +215,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,

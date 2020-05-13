@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class OptionsCardComponent implements OnInit {
 
   @Input()
-  private imgSrc:string;
+  public imgSrc:string;
 
   @Input()
   public name:string;
@@ -17,7 +17,7 @@ export class OptionsCardComponent implements OnInit {
   public selected : boolean = false;
 
   @Input()
-  private title:string;
+  public title:string;
 
   @Output()
   private select =  new EventEmitter<Object>()

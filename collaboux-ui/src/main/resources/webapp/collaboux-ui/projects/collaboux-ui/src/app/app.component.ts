@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 import {IStompJS, StompInjectionToken} from "./shared/lib/stomp";
+import {NgSelectConfig} from "@ng-select/ng-select";
 
 declare let SockJS;
 @Component({
@@ -15,7 +16,9 @@ export class AppComponent implements OnInit {
   stompClient : IStompJS;
 
   constructor(@Inject(StompInjectionToken) private stomp: IStompJS, private http: HttpClient,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
    // either redirect user to there page or take them to a home page
