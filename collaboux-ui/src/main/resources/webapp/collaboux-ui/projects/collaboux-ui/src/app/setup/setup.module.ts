@@ -7,10 +7,13 @@ import {IconsModule} from "../icons/icons.module";
 import {SetupRoutingModule} from "./setup-routing.module";
 import {SetupComponent} from "./setup.component";
 import {SharedModule} from "../shared/shared.module";
+import {NgSelectModule} from "@ng-select/ng-select";
+import {FormsModule} from "@angular/forms";
+
 @NgModule({
   declarations: [SelectTypeComponent,SetupComponent, AddInformationComponent, CompletionComponent],
   imports: [
-    CommonModule,IconsModule,SetupRoutingModule, SharedModule
+    CommonModule, IconsModule, SetupRoutingModule, SharedModule, NgSelectModule, FormsModule
   ]
 })
 export class SetupModule { }

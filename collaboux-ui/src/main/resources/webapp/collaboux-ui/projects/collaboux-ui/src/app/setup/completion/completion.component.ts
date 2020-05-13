@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompletionComponent implements OnInit {
 
-  private selectedCars = [3];
-  private cars = [
+  public selectedCars = [3];
+  public cars = [
     { id: 1, name: 'Volvo' },
     { id: 2, name: 'Saab' },
     { id: 3, name: 'Opel' },

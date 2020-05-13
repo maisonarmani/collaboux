@@ -18,12 +18,12 @@
     </div>
   </div>
   <div>
-
-    <ng-select [multiple]="true" [(ngModel)]="selectedCars">
-      <ng-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">{{car.name}}</ng-option>
-      <ng-option [value]="'custom'">Custom</ng-option>
-    </ng-select>
-
+    <div>
+      <ng-select [multiple]="true" [(ngModel)]="selectedCars" placeholder="Select your preferred genre" >
+        <ng-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">{{car.name}}</ng-option>
+        <ng-option [value]="'custom'">Custom</ng-option>
+      </ng-select>
+    </div>
   </div>
 
 

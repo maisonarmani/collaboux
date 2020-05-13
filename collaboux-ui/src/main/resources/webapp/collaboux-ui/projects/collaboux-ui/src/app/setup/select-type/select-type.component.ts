@@ -9,7 +9,7 @@ import {OptionsCardComponent} from "../../shared/ui-components/options-card/opti
 })
 export class SelectTypeComponent {
 
-  private selected:string;
+  public selected:string;
 
   constructor(private activatedRoute :ActivatedRoute) {
     console.log(activatedRoute.snapshot)

@@ -8,10 +8,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class BadgeComponent implements OnInit{
 
   @Input()
-  private imgSrc:string;
+  public imgSrc:string;
 
   @Input()
-  private name:string;
+  public name:string;
 
   @Input()
   private value:string[] = [];

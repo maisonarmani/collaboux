@@ -16,15 +16,8 @@ export class AppComponent implements OnInit {
   stompClient : IStompJS;
 
   constructor(@Inject(StompInjectionToken) private stomp: IStompJS, private http: HttpClient,
-              private route: ActivatedRoute,private config: NgSelectConfig) {
-    this.config.notFoundText = 'Custom not found';
-    this.config.appendTo = 'body';
-    // set the bindValue to global config when you use the same
-    // bindValue in most of the place.
-    // You can also override bindValue for the specified template
-    // by defining `bindValue` as property
-    // Eg : <ng-select bindValue="some-new-value"></ng-select>
-    this.config.bindValue = 'value';
+              private route: ActivatedRoute) {
+
   }
 
   ngOnInit(): void {
