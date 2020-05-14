@@ -1,7 +1,6 @@
 package com.randomsturvs.collaboux.config;
 
 
-import com.randomsturvs.collaboux.GoalService;
 import com.randomsturvs.collaboux.sqlinspector.SqlCommandStatementInspector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -20,9 +19,6 @@ public class HibernateConfig {
 
     @Autowired
     JpaVendorAdapter vendorAdapter;
-
-    @Autowired
-    GoalService service;
 
     @Bean(name = "entityManagerFactory")
     public EntityManagerFactory entityManagerFactory(){
@@ -54,10 +50,5 @@ public class HibernateConfig {
 
         emf.afterPropertiesSet();
         return emf.getObject();
-    }
-
-    @Bean
-    public void repoTest(){
-        service.saveGoal("Miracle");
     }
 }

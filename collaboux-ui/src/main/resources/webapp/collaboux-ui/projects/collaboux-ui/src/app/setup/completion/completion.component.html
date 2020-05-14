@@ -18,10 +18,22 @@
     </div>
   </div>
   <div>
+    <h4 class="text-weight-bold text-color-medium">Select preferred music genre</h4>
+    <h4 class="text-small text-weight-normal text-color-light mt-4">Let others get to know you better, you can choose to complete this later.</h4>
     <div>
-      <ng-select [multiple]="true" [(ngModel)]="selectedCars" placeholder="Select your preferred genre" >
-        <ng-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">{{car.name}}</ng-option>
-        <ng-option [value]="'custom'">Custom</ng-option>
+      <ng-select [items]="companies"
+                 [addTag]="addTag"
+                 [closeOnSelect]="false"
+                 [hideSelected]="true"
+                 [multiple]="true"
+                 [bindLabel]="'name'"
+                 [loading]="loading"
+                 [inputAttrs]="{placeholder:'Type in genre here'}"
+                 [(ngModel)]="selectedCompanies">
+
+        <ng-template ng-tag-tmp let-search="searchTerm">
+          <b>create new</b>: {{search}}
+        </ng-template>
       </ng-select>
     </div>
   </div>

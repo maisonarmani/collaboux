@@ -24,11 +24,6 @@
             <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>3.8.7</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
@@ -39,18 +34,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.4.1</version>
-                <configuration>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                    <outputChangeLogFile>src/main/resources/liquibase/outputChangeLog.xml</outputChangeLogFile>
-                    <changeLogFile>src/main/resources/liquibase/changeLog.xml</changeLogFile>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

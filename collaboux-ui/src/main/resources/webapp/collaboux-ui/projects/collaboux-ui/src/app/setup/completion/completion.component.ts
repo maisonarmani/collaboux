@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgSelectComponent} from "@ng-select/ng-select";
 
 @Component({
   selector: 'app-completion',
@@ -7,15 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompletionComponent implements OnInit {
 
-  public selectedCars = [3];
-  public cars = [
-    { id: 1, name: 'Volvo' },
-    { id: 2, name: 'Saab' },
-    { id: 3, name: 'Opel' },
-    { id: 4, name: 'Audi' },
-  ];
+  public selectedCompanies = ['Uber', 'Microsoft'];
+  public companies: any[] = [];
+  public loading = false;
+  public companiesNames = ['Uber', 'Microsoft', 'Flexigen','Hip hop', "Jazz", "Reggea", "Afro hip hip", "Alte Rock", "Alte Jazz", "RnB"];
 
   constructor() { }
-  ngOnInit() { }
+  ngOnInit() {
+    this.companiesNames.forEach((c, i) => {
+      this.companies.push({ id: i, name: c, selected:true });
+    });
+  }
+
+  /**
+   * note
+   * context bind to this method is an instance of NgSelectComponent
+   */
+
+  addTag(){
+    return new Promise((resolve) => {
+      this.loading = true;
+      setTimeout(() => {
+        // @ts-ignore
+        resolve({ id: this.items.length, name: this.searchTerm, valid: true });
+        this.loading = false;
+      }, 1000);
+    })
+  }
 
 }

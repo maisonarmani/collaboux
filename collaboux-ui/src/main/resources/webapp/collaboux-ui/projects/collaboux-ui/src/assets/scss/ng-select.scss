@@ -2,12 +2,6 @@
   padding-bottom: 1.25em;
   &.ng-select-disabled {
     .ng-select-container {
-      &:after {
-        border-bottom-color: transparent;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.42) 33%, transparent 0%);
-        background-size: 4px 1px;
-        background-repeat: repeat-x;
-      }
       .ng-value-container {
         .ng-value {
           color: rgba(0, 0, 0, 0.38);
@@ -20,19 +14,15 @@
   }
   &.ng-select-focused {
     .ng-select-container {
-      &:after {
-        border-color: #3f51b5;
-        border-width: 2px;
-      }
       .ng-value-container {
         .ng-placeholder {
           transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);
-          color: #3f51b5;
+          color: $text-medium;
         }
       }
       .ng-arrow-wrapper {
         .ng-arrow {
-          color: #3f51b5;
+          color: $text-medium;
         }
       }
     }
@@ -41,15 +31,7 @@
     color: rgba(0, 0, 0, 0.87);
     align-items: baseline;
     min-height: 51.5px;
-    &:after {
-      border-bottom: thin solid rgba(0, 0, 0, 0.42);
-      content: '';
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      transition: border-color 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
-    }
+
     &.ng-appearance-outline {
       padding: 0 .5em;
       min-height: 60px;
@@ -77,7 +59,6 @@
     }
     .ng-value-container {
       align-items: stretch;
-      padding: .4375em 0;
       border-top: .84375em solid transparent;
       .ng-placeholder {
         position: absolute;
@@ -136,11 +117,12 @@
       }
       .ng-value-container {
         .ng-value {
-          background-color: #3f51b5;
+          background-color: $text-light;
           border-radius: 2px;
           color: #fff;
-          padding: 2px 5px;
+          padding: 2px 10px;
           margin: 0 0.4375em 0.4375em 0;
+          line-height: 1.5em;
           &.ng-value-disabled {
             background-color: rgba(0, 0, 0, 0.12);
             color: rgba(0, 0, 0, 0.26);
@@ -158,14 +140,17 @@
           }
         }
         .ng-input {
-          line-height: 1.375em;
+          input{
+            padding: 5px 0px;
+            margin: 0 0.5em 0.5em 0;
+            line-height: 1.5em;
+          }
         }
       }
       &.ng-has-value {
         align-items: center;
         .ng-value-container {
           padding-bottom: 0;
-          padding-top: .1875em;
         }
       }
     }
@@ -193,10 +178,7 @@
 .ng-select.ng-select-disabled .ng-arrow-wrapper .ng-arrow, .ng-select.ng-select-disabled .ng-clear-wrapper {
   color: rgba(0, 0, 0, 0.38);
 }
-.ng-select.ng-select-focused .ng-select-container.ng-appearance-outline:after, .ng-select.ng-select-focused .ng-select-container.ng-appearance-outline:hover:after {
-  border-color: #3f51b5;
-  border-width: 2px;
-}
+
 .ng-select .ng-has-value .ng-placeholder, .ng-select.ng-select-filtered .ng-select-container .ng-placeholder {
   display: initial;
 }
@@ -227,6 +209,8 @@
     }
   }
   .ng-dropdown-panel {
+    border-radius: 17px;
+    overflow: scroll;
     .ng-dropdown-panel-items {
       .ng-option {
         text-align: right;
@@ -246,15 +230,15 @@
   border-top: .84375em solid transparent;
 }
 .ng-dropdown-panel {
-  background: #fff;
+  background: $text-white-color;
   left: 0;
+  border-radius: 0.5em;
+  overflow: hidden;
   &.ng-select-bottom {
     top: calc(100% - 1.25em);
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
   }
   &.ng-select-top {
     bottom: calc(100% - .84375em);
-    box-shadow: 0 -5px 5px -3px rgba(0, 0, 0, 0.2), 0 -8px 10px 1px rgba(0, 0, 0, 0.14), 0 -3px 14px 2px rgba(0, 0, 0, 0.12);
   }
   &.multiple {
     .ng-option {
@@ -295,10 +279,12 @@
       }
       &.ng-option-selected {
         background: rgba(0, 0, 0, 0.12);
-        color: #3f51b5;
+        color: $text-white-color;
+        font-weight: bold;
       }
     }
     .ng-option {
+      font-size: 0.9em;
       line-height: 3em;
       min-height: 3em;
       white-space: nowrap;
@@ -315,7 +301,8 @@
       }
       &.ng-option-selected {
         background: rgba(0, 0, 0, 0.12);
-        color: #3f51b5;
+        color: $text-white-color;
+        font-weight: bold;
       }
       &.ng-option-disabled {
         color: rgba(0, 0, 0, 0.38);
