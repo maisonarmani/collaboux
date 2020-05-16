@@ -1,4 +1,4 @@
-<div style="max-width: 60em; margin: auto">
+<div style="max-width: 45em; margin: auto">
 
   <div style=" margin-top: 2em;">
     <h4 class="text-weight-bold text-color-medium text-large">Almost done!</h4>
@@ -18,24 +18,54 @@
     </div>
   </div>
   <div>
-    <h4 class="text-weight-bold text-color-medium">Select preferred music genre</h4>
-    <h4 class="text-small text-weight-normal text-color-light mt-4">Let others get to know you better, you can choose to complete this later.</h4>
     <div>
-      <ng-select [items]="companies"
-                 [addTag]="addTag"
+      <h4 class="text-weight-bold text-color-medium">Basic Information</h4>
+      <h4 class="text-small text-weight-normal text-color-light mt-4">We'e big on correct full name, there's a seperate field for your nickname :)</h4>
+    </div>
+    <div class="display-flex fill-width mt-4">
+      <div class="display-flex flex-column flex-1 mr-4">
+        <label>First name </label>
+        <input type="text" placeholder="Maison" />
+      </div>
+      <div  class="display-flex flex-column flex-1 ">
+        <label>Last name</label>
+        <input type="text" placeholder="Armani" />
+      </div>
+    </div>
+
+    <div class="display-flex fill-width mt-2">
+      <div class="display-flex flex-column flex-1">
+        <label>Username</label>
+        <input type="text" placeholder="6+ character" />
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <h4 class="text-weight-bold text-color-medium">Select preferred music genre and tags</h4>
+    <h4 class="text-small text-weight-normal text-color-light mt-4">Tell kollaboux about your preferred musical genre and add easy search tags</h4>
+    <div>
+      <ng-select [items]="genres"
                  [closeOnSelect]="false"
                  [hideSelected]="true"
                  [multiple]="true"
                  [bindLabel]="'name'"
+                 [searchable]="true"
                  [loading]="loading"
                  [inputAttrs]="{placeholder:'Type in genre here'}"
-                 [(ngModel)]="selectedCompanies">
+                 [(ngModel)]="selectedGenres">
 
-        <ng-template ng-tag-tmp let-search="searchTerm">
-          <b>create new</b>: {{search}}
+<!--        <ng-template ng-tag-tmp let-search="searchTerm">-->
+<!--          <b>create new</b>: {{search}}-->
+<!--        </ng-template>-->
+
+        <ng-template ng-option-tmp let-item="item" let-index="index">
+          <span>{{item.value | titlecase}}</span>
         </ng-template>
+
       </ng-select>
     </div>
+
   </div>
 
 

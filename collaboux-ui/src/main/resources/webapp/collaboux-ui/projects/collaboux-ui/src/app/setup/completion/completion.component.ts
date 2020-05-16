@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NgSelectComponent} from "@ng-select/ng-select";
+import { environment } from '../../../environments/environment';
+import {CacheableHttpClientService} from "../../shared/services/cacheable-http-client.service";
 
 @Component({
   selector: 'app-completion',
@@ -8,15 +9,17 @@ import {NgSelectComponent} from "@ng-select/ng-select";
 })
 export class CompletionComponent implements OnInit {
 
-  public selectedCompanies = ['Uber', 'Microsoft'];
-  public companies: any[] = [];
+  public selectedGenres = ['Hip hop', 'Afro beat','Jazz', 'Reggae'];
+  public genres: any[] = [];
   public loading = false;
-  public companiesNames = ['Uber', 'Microsoft', 'Flexigen','Hip hop', "Jazz", "Reggea", "Afro hip hip", "Alte Rock", "Alte Jazz", "RnB"];
 
-  constructor() { }
+
+  constructor(private http:CacheableHttpClientService) { }
+
   ngOnInit() {
-    this.companiesNames.forEach((c, i) => {
-      this.companies.push({ id: i, name: c, selected:true });
+    this.http.cacheableGet('genres',`${environment.appUrl}/api/utility/genres`).subscribe((genres:any[])=>{
+        this.genres = genres.map((value,index)=>{ return {id:index,value}; });
+        this.genres = this.genres.slice(0,40);
     });
   }
 
@@ -35,5 +38,4 @@ export class CompletionComponent implements OnInit {
       }, 1000);
     })
   }
-
 }

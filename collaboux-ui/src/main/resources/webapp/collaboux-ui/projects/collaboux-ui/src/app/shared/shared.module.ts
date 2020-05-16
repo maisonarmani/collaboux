@@ -6,6 +6,7 @@ import {OptionsCardComponent} from "./ui-components/options-card/options-card.co
 import {CommonModule, Location, LocationStrategy, PathLocationStrategy} from "@angular/common";
 import { BadgeComponent } from './ui-components/badge/badge.component';
 import {IconsModule} from "../icons/icons.module";
+import {CacheableHttpClientService} from "./services/cacheable-http-client.service";
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import {IconsModule} from "../icons/icons.module";
     SelectCardComponent,OptionsCardComponent, BadgeComponent
   ],
   providers: [
-    AuthenticationService, Location, {provide: LocationStrategy, useClass: PathLocationStrategy}
+    AuthenticationService, Location,CacheableHttpClientService, {provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
   exports: [
     SelectCardComponent, OptionsCardComponent, BadgeComponent
