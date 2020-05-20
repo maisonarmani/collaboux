@@ -14,6 +14,7 @@
 		<module>collaboux-kafka-service</module>
 		<module>collaboux-kafka-lib</module>
 		<module>collaboux-utility-lib</module>
+        <module>collaboux-audio-service</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -1,0 +1,7 @@
+<label>{{label}} <small class="block text-danger text-small text-weight-bold">{{ self.errors && self.errors.required ? '*' :  ''}}</small></label>
+<input [type]="type" [placeholder]="placeholder" [value]="val"/>
+<div style="position: absolute;right: 0.5em; top: calc(50% - 0.3em);">
+  <i-feather name="check" class="valid text-success text-small" [class.hidden]="self" ></i-feather>
+  <i-feather name="x" class="error text-danger text-smaller" [class.hidden]="true"></i-feather>
+</div>
+

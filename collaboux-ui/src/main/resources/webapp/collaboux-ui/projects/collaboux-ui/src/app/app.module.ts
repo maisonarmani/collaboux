@@ -29,6 +29,7 @@ const  StompProvider = {provide: StompInjectionToken, useValue: Stomp};
     ApplicationBootstrap, StompProvider,
     {provide: HTTP_INTERCEPTORS, multi: true, useClass: NoopInterceptorService}
   ],
+  entryComponents:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

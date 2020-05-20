@@ -29,7 +29,7 @@ h3,h4,h5,h6{
 .display-flex{
   display: flex;
 
-  & > .flex{
+  .flex{
     &-1{
       flex: 1;
     }
@@ -123,8 +123,11 @@ input,select, textarea{
   border: 0px;
   padding:1.1em;
   margin: 0.5em 0 1em 0em;
-  border-radius: 4px;
+  border-radius: 5px;
   background-color:  $border-light-color;
+  font-weight: bold;
+  max-width: 25em;
+  min-width: 25em;
   &:active, &:-webkit-autofill{
     &:hover, &:focus{
       background-color: transparent;
@@ -134,68 +137,10 @@ input,select, textarea{
     max-width: 30em;
   }
 }
-.icon-btn{
-  border-radius: 100%;
-  margin:1em 0;
-  padding:1em;
-  color:white;
-  background-color: $primary-color;
-  display: inline-block;
-  &.flat,&-flat{
-    border-radius: 0;
-  }
-}
+
+
 hr{
   border:solid 1px #efefef;
-}
-
-.btn{
-  font-size: 0.9em;
-  padding: 0 1em;
-  margin: 0.5em 0;
-  font-weight: bold;
-  border-radius: 4px;
-  color: white;
-  vertical-align: middle;
-  box-sizing: border-box;
-  line-height: 3.3em;
-  background-color: $primary-color;
-  text-align: center;
-  &-small{
-    line-height: 2.5em;
-    font-size: $small-font-size;
-  }
-  &-medium{
-    line-height: 3.5em;
-    font-size: $small-font-size;
-  }
-  &-flat{
-    border-radius: 0;
-  }
-  &-light{
-    background-color: $border-light-color;
-    color: $text-light;
-  }
-  &-block{
-    display: block;
-    width: 100%;
-  }
-  &-block-inline{
-    display: inline-block;
-  }
-  &-outline{
-    color:$primary-color;
-    background-color:transparent;
-    display: block;
-    border-color: $primary-color;
-  }
-  &-curved{
-    border-radius: 2em;
-  }
-
-  &-extended{
-    min-width: 10em;
-  }
 }
 
 .background-color{
@@ -241,7 +186,20 @@ hr{
   font-weight: lighter;
 }
 
-
+.p{
+  &-relative{
+    position: relative;
+  }
+  &-fixed{
+    position: fixed;
+  }
+  &-absolute{
+    position: absolute;
+  }
+  &-static{
+    position: static;
+  }
+}
 .text{
   &-align-center{
     text-align: center;
@@ -254,6 +212,19 @@ hr{
   &-large{
     font-size: 2.1em;
   }
+
+  &-danger{
+    color: $color-danger !important;
+  }
+
+  &-pending{
+    color: $color-pending !important;
+  }
+
+  &-success{
+    color: $color-success !important;
+  }
+
   &-weight{
     &-bold{
       font-weight: bold;
@@ -280,6 +251,9 @@ hr{
       color:$text-light;
     }
 
+    &-muted{
+      color:$text-muted;
+    }
     &-primary{
       color:$primary-color;
     }
@@ -301,7 +275,7 @@ hr{
 }
 
 .avatar{
-  object-fit: contain;
+  object-fit: cover;
   &-small{
     width:2em;
     height:2em;
@@ -311,12 +285,12 @@ hr{
     height:1.5em;
   }
   &-medium{
-    width:4.5em;
-    height:4.5em;
+    width:3.5em;
+    height:3.5em;
   }
   &-large{
-    width:7.5em;
-    height:7.5em;
+    width:5.5em;
+    height:5.5em;
   }
 
   &-flat{
@@ -329,8 +303,24 @@ hr{
 }
 
 .hidden{
-  display: none;
+  display: none !important;
 }
+
+
+.badge-container {
+  display: flex;
+  flex-direction: row;
+  overflow-scrolling: touch;
+  overscroll-behavior-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -weblit-overscroll-behavior-x: auto;
+  overflow: scroll;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  @extend .mt-4
+}
+
 
 .grid-container{
   display: grid;

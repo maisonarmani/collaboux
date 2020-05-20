@@ -1,8 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {IStompJS, StompInjectionToken} from "./shared/lib/stomp";
-import {NgSelectConfig} from "@ng-select/ng-select";
 
 declare let SockJS;
 @Component({

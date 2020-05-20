@@ -8,12 +8,12 @@ import {SetupRoutingModule} from "./setup-routing.module";
 import {SetupComponent} from "./setup.component";
 import {SharedModule} from "../shared/shared.module";
 import {NgSelectModule} from "@ng-select/ng-select";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [SelectTypeComponent,SetupComponent, AddInformationComponent, CompletionComponent],
   imports: [
-    CommonModule, IconsModule, SetupRoutingModule, SharedModule, NgSelectModule, FormsModule
+    CommonModule, IconsModule, SetupRoutingModule, SharedModule, NgSelectModule, FormsModule, ReactiveFormsModule
   ]
 })
 export class SetupModule { }

@@ -1,31 +1,28 @@
 @import "../../../../assets/scss/variables";
-.badge-container {
-  flex-direction: row;
-  overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  overflow: scroll;
-}
+@import "../../../../assets/scss/spacing";
 
+$wh:5em;
 .badge{
   text-align: center;
   position:relative;
-  display: inline-block;
-
+  flex: 0 0 auto;
+  transition: 0.4s all ease-in-out;
   &, & > .badge__image,& > .badge__check{
-    width:5.5em;
+    width:$wh;
   }
 
   & > .badge__image, & > .badge__check{
-    height:5.5em;
+    height:$wh;
     border-radius: 100%;
     cursor: pointer;
   }
 
   & > .badge__image{
     text-align: center;
-    background-color: $text-secondary-color;
+    background-color: $text-muted;
     display: flex;
     align-items: center;
+    opacity: 0.8;
     img{
       width: 60%;
       margin: auto;
@@ -43,7 +40,7 @@
     top:0;
     left: 0;
     color: white;
-    line-height: 5.5em;
+    line-height: $wh;
     font-weight:bold;
     position: absolute;
     opacity: 0.9;
@@ -54,6 +51,9 @@
   &:hover, &.selected{
     & > .badge__check{
       display: block;
+    }
+    & > .badge__image{
+      opacity: 1;
     }
   }
 }

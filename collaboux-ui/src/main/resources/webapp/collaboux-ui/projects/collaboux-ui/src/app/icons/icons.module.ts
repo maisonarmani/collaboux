@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FeatherModule } from 'angular-feather';
-import { Camera, Heart, Facebook,Twitch, User, Twitter,ChevronLeft, Check} from 'angular-feather/icons';
+import { Camera, Heart, Facebook,Twitch, User, Twitter,ChevronLeft, Check, X, MapPin} from 'angular-feather/icons';
 import { SvgComponent } from './svg/svg.component';
 import {CommonModule} from "@angular/common";
 const icons = {
@@ -11,7 +11,7 @@ const icons = {
   Twitch,
   Twitter,
   ChevronLeft,
-  Check
+  Check,X,MapPin
 };
 
 @NgModule({

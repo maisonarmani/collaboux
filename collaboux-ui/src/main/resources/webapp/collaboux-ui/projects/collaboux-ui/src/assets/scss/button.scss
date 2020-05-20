@@ -1,0 +1,61 @@
+
+.btn{
+  font-size: 0.9em;
+  padding: 0 1em;
+  margin: 0.5em 0;
+  font-weight: bold;
+  border-radius: 4px;
+  color: white;
+  vertical-align: middle;
+  box-sizing: border-box;
+  line-height: 3.3em;
+  background-color: $primary-color;
+  text-align: center;
+  &-small{
+    line-height: 2.5em;
+    font-size: $small-font-size;
+  }
+  &-medium{
+    line-height: 3.5em;
+    font-size: $small-font-size;
+  }
+  &-flat{
+    border-radius: 0;
+  }
+  &-light{
+    background-color: $border-light-color;
+    color: darken($text-light,50%);
+  }
+  &-block{
+    display: block;
+    width: 100%;
+  }
+  &-block-inline{
+    display: inline-block;
+  }
+  &-outline{
+    color:$primary-color;
+    background-color:transparent;
+    display: block;
+    border-color: $primary-color;
+  }
+  &-curved{
+    border-radius: 2em;
+  }
+
+  &-extended{
+    min-width: 10em;
+  }
+}
+
+.icon-btn{
+  border-radius: 100%;
+  margin:1em 0;
+  padding:1em;
+  color:white;
+  background-color: $primary-color;
+  display: inline-block;
+  &.flat,&-flat{
+    border-radius: 0;
+  }
+}

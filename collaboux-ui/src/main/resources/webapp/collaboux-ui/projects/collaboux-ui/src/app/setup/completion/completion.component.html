@@ -1,76 +1,80 @@
 <div style="max-width: 45em; margin: auto">
 
-  <div style=" margin-top: 2em;">
+  <div>
     <h4 class="text-weight-bold text-color-medium text-large">Almost done!</h4>
-    <h4 class="text-small text-weight-normal text-color-light mt-6">Let others get to know you better, you can choose to complete this later.</h4>
+    <h4 class="text-small text-weight-normal text-color-light mt-6">Let others get to know you better, you can choose to
+      complete this later.</h4>
   </div>
 
   <div class="display-flex  flex-column my-6">
     <div class="display-flex flex-align-start flex-row">
       <div class="display-flex flex-align-center flex-row">
-        <img src="../../../assets/images/gabriel-gurrola-2UuhMZEChdc-unsplash.jpg" class="avatar-large avatar-circle">
+        <img src="../../../assets/images/gabriel-gurrola-2UuhMZEChdc-unsplash.jpg"
+             class="avatar avatar-large avatar-circle">
         <div class="flex-row ml-6">
-          <a href="#" class="btn btn-light btn-block-inline btn-medium">Add a profile photo</a>
-          <div class="text-small text-color-light mt-2 ">Or you can use our image generator</div>
+          <a href="#" class="btn btn-light btn-block-inline btn-medium" (click)="tryUpload($event)">Add a profile photo</a>
         </div>
-        <input type="file" class="hidden">
+        <input type="file" class="hidden" (change)="handleFileUpload($event)" #profileImage>
       </div>
     </div>
   </div>
-  <div>
+  <form [formGroup]="profileForm">
     <div>
-      <h4 class="text-weight-bold text-color-medium">Basic Information</h4>
-      <h4 class="text-small text-weight-normal text-color-light mt-4">We'e big on correct full name, there's a seperate field for your nickname :)</h4>
-    </div>
-    <div class="display-flex fill-width mt-4">
-      <div class="display-flex flex-column flex-1 mr-4">
-        <label>First name </label>
-        <input type="text" placeholder="Maison" />
+      <div>
+        <h4 class="text-weight-bold text-color-medium">Basic Information</h4>
+        <h4 class="text-small text-weight-normal text-color-light mt-4">We're big on correct full name, we've a separate field for your nickname :)</h4>
       </div>
-      <div  class="display-flex flex-column flex-1 ">
-        <label>Last name</label>
-        <input type="text" placeholder="Armani" />
+
+      <div class="display-flex fill-width mt-6">
+        <collaboux-input label="Firstname" type="text" formControlName="firstname"
+                         class="flex-1 mr-4"></collaboux-input>
+        <collaboux-input label="Lastname" type="text" formControlName="lastname" class="flex-1"></collaboux-input>
+      </div>
+      <div class="display-flex fill-width mt-2">
+        <collaboux-input label="Username" type="text" formControlName="username" class="flex-1 mr-4"></collaboux-input>
+        <collaboux-input label="Nickname" type="text" formControlName="nickname" class="flex-1"></collaboux-input>
+      </div>
+      <div class="display-flex mt-2">
+        <collaboux-input label="Email Address" type="text" formControlName="email"></collaboux-input>
+      </div>
+
+      <div class="mt-10">
+        <h4 class="text-weight-bold text-color-medium">Location</h4>
+      </div>
+      <div class="display-flex fill-width mt-4 flex-column">
+        <collaboux-input label="" type="text" formControlName="location" class="flex-1"></collaboux-input>
+        <a href="." class="text-small"><i-feather name="map-pin" style="width: 1.2em;"></i-feather> Use current location instead.</a>
+      </div>
+      <div class="my-10 display-flex flex-align-start flex-column ">
+        <button href="" class="btn btn-block-inline btn-extended" routerLink="/">I'm done</button>
       </div>
     </div>
+  </form>
+</div>
 
-    <div class="display-flex fill-width mt-2">
-      <div class="display-flex flex-column flex-1">
-        <label>Username</label>
-        <input type="text" placeholder="6+ character" />
-      </div>
-    </div>
-  </div>
-
-  <div class="mt-6">
-    <h4 class="text-weight-bold text-color-medium">Select preferred music genre and tags</h4>
-    <h4 class="text-small text-weight-normal text-color-light mt-4">Tell kollaboux about your preferred musical genre and add easy search tags</h4>
-    <div>
-      <ng-select [items]="genres"
-                 [closeOnSelect]="false"
-                 [hideSelected]="true"
-                 [multiple]="true"
-                 [bindLabel]="'name'"
-                 [searchable]="true"
-                 [loading]="loading"
-                 [inputAttrs]="{placeholder:'Type in genre here'}"
-                 [(ngModel)]="selectedGenres">
-
+<!--  <div class="mt-6">-->
+<!--    <h4 class="text-weight-bold text-color-medium">Select preferred music genre and tags</h4>-->
+<!--    <h4 class="text-small text-weight-normal text-color-light mt-4">Tell kollaboux about your preferred musical genre and add easy search tags</h4>-->
+<!--    <div>-->
+<!--      <ng-select [items]="genres"-->
+<!--                 [closeOnSelect]="false"-->
+<!--                 [addTag]="addTag"-->
+<!--                 [hideSelected]="true"-->
+<!--                 [multiple]="true"-->
+<!--                 [bindLabel]="'value'"-->
+<!--                 [searchable]="true"-->
+<!--                 [loading]="loading"-->
+<!--                 [inputAttrs]="{placeholder:'Type in genre here'}"-->
+<!--                 [bufferAmount]="20"-->
+<!--                 [(ngModel)]="selectedGenres">-->
 <!--        <ng-template ng-tag-tmp let-search="searchTerm">-->
 <!--          <b>create new</b>: {{search}}-->
 <!--        </ng-template>-->
 
-        <ng-template ng-option-tmp let-item="item" let-index="index">
-          <span>{{item.value | titlecase}}</span>
-        </ng-template>
+<!--        <ng-template ng-option-tmp let-item="item" let-index="index">-->
+<!--          <span>{{item.value | titlecase}}</span>-->
+<!--        </ng-template>-->
+<!--      </ng-select>-->
+<!--    </div>-->
+<!--  </div>-->
 
-      </ng-select>
-    </div>
-
-  </div>
-
-
-  <div class="my-10 display-flex flex-align-start flex-column ">
-    <a href="" class="btn btn-block-inline btn-extended" routerLink="/">I'm done</a>
-  </div>
-
-</div>
